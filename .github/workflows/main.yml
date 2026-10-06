@@ -14,11 +14,13 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Set up JDK
-        uses: actions/setup-java@v4
+      - name: Install Gradle
+        uses: gradle/actions/setup-gradle@v4
         with:
-          distribution: temurin
-          java-version: '17'
+          gradle-version: 8.7
+
+      - name: Generate Gradle Wrapper
+        run: gradle wrapper --gradle-version 8.7
 
       - name: Make gradlew executable
         run: chmod +x gradlew
